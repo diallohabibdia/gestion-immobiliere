@@ -1,0 +1,17 @@
+{
+  "name": "gestion-immobiliere",
+  "version": "1.0.0",
+  "description": "Application de gestion immobilière",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.28.0",
+    "dotenv": "^10.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
