@@ -46,6 +46,8 @@ const Client = sequelize.define('Client', {
   boite_postale:{
     type: DataTypes.STRING,
   },
+  mot_de_passe: { type: DataTypes.STRING, allowNull: false },
+
   contact_urgence:{
     type: DataTypes.STRING,
   }
