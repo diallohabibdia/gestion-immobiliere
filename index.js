@@ -1,17 +1,87 @@
-const express = require('express');  // Importation d'Express
-const app = express();  // Création d'une instance d'Express
 
-const port = process.env.PORT || 3000;  // Définition du port
+import express from "express";
+import compression from "compression";
+import helmet from "helmet";
+import bodyParser from "body-parser";
+import cors from 'cors'
+import dotenv from 'dotenv'
+// import { addUser, deleteUser, getUsers } from "./controllers/userController.js";
 
-// Middleware pour gérer les requêtes JSON
-app.use(express.json());
+//Importer la connexion a la base de donnees
+import database from "./config/connection.js";
+import userRoute from "./routes/userRoute.js";
+import departmentRoute from "./routes/departmentRoute.js";
+import authRoute from "./routes/authRoute.js";
 
-// Exemple de route
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+const ENV = dotenv.config().parsed
 
-// Démarrage du serveur
-app.listen(port, () => {
-  console.log(`Serveur démarré sur le port ${port}`);
-});
+//creation du serveur
+const app = express()
+
+//Utilisation des middlewares
+app.use(cors())
+app.use(helmet())
+app.use(compression())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+//Generation des tables
+// database.sync({alter:true})
+
+//Routes
+// app.get('/api/users', getUsers)
+// app.post('/api/users', addUser)
+// app.delete('/api/users/:id', deleteUser)
+
+app.use('/api/users', userRoute)
+
+app.use('/api/departments', departmentRoute)
+
+app.use('/api/login', authRoute)
+
+// Demarrage du serveur
+const PORT = ENV.PORT
+app.listen(PORT, () => console.log(`Ca tourne sur le port ${PORT}`))
+
+///
+import express from "express";
+import compression from "compression";
+import helmet from "helmet";
+import bodyParser from "body-parser";
+import cors from 'cors'
+import dotenv from 'dotenv'
+// import { addUser, deleteUser, getUsers } from "./controllers/userController.js";
+
+//Importer la connexion a la base de donnees
+import database from "./config/database.js";
+import userRoute from "./routes/userRoute.js";
+import departmentRoute from "./routes/departmentRoute.js";
+import authRoute from "./routes/authRoute.js";
+
+const ENV = dotenv.config().parsed
+
+//creation du serveur
+const app = express()
+
+//Utilisation des middlewares
+app.use(cors())
+app.use(helmet())
+app.use(compression())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
+
+app.use('/api/users', userRoute)
+
+app.use('/api/departments', departmentRoute)
+
+app.use('/api/login', authRoute)
+
+// Demarrage du serveur
+const PORT = ENV.PORT
+app.listen(PORT, () => console.log(`Ca tourne sur le port ${PORT}`))
+
+
+///
+

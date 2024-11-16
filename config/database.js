@@ -1,21 +1,22 @@
-const { Sequelize } = require('sequelize');
+// Importer le module de connexion
+import { Sequelize } from "sequelize"
 
-// Configuration de la base de données
-const sequelize = new Sequelize({
-  dialect: 'mysql',         // Base de données MySQL
-  host: 'localhost',        // Hôte de la base de données
-  username: 'root',         // Nom d'utilisateur de la base
-  password: '',             // Mot de passe de la base
-  database: 'gestion_immobiliere',  // Nom de la base de données
-});
+//Importer les variables de connexion 
+import dotenv from 'dotenv'
+const ENV = dotenv.config().parsed
 
-// Test de la connexion à la base de données
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connexion à la base de données réussie');
-  })
-  .catch((error) => {
-    console.error('Impossible de se connecter à la base de données:', error);
-  });
 
-module.exports = sequelize;
+const database = new Sequelize(ENV.DB_NAME, ENV.DB_USER, ENV.DB_PASSWORD, {
+  host: ENV.DB_HOST,
+  dialect: ENV.DB_DIALECT,
+  // port:ENV.DB_PORT
+})
+
+try {
+  await connection.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
+
+export default database
