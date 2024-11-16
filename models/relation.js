@@ -11,6 +11,6 @@ Client.hasMany(Reservation)
 Immobilier.belongsTo(Localisation)
 Immobilier.hasMany(Equipement)
 Paiement.hasMany(Reservation)
-
+// relations
 
 export {Client, Immobilier, Paiement, Reservation, Equipement, Localisation }
