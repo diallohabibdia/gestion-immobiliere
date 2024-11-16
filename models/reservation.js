@@ -15,6 +15,10 @@ const Reservation = sequelize.define('Reservation', {
   },
   
 });
+// Définir les relations
+
+Reservation.belongsTo(Salle, { foreignKey: 'salleId' });
+Salle.hasMany(Reservation, { foreignKey: 'salleId' });
 
 // Exportation du modèle reservation
 module.exports = Reservation;
