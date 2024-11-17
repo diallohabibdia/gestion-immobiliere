@@ -1,4 +1,4 @@
-const Client = require('../models/Client');  // Importation du modèle Client
+import { Client } from '../models/relation';// Importation du modèle Client
 const { ValidationError } = require('sequelize');  // Importation de l'erreur de validation de Sequelize
 
 // Fonction pour créer un client

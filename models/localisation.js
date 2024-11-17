@@ -13,6 +13,14 @@ const Localisation = sequelize.define('Localisation', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  adresse:{
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  codePostal:{
+    type: DataTypes.STRING,
+    allowNull: false
+  }
   });
   
   // Exportation du modèle localisation

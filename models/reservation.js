@@ -2,19 +2,31 @@ import database from "../config/database.js";
 import { DataTypes } from "sequelize";
 // Définition du modèle Reservation
 const Reservation = sequelize.define('Reservation', {
-  raison: {
+  clientId: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  Description: {
+  bienImmobilierId:{
     type: DataTypes.STRING,
+    allowNull: false,
   },
-  date: {
+  statut: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  dateFin: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  
+  dateDebut:{
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  montant:{
+    type: DataTypes.INTEGER,
+    allowNull:false
+  }
 });
 
-// Exportation du modèle reservation
+// Exportation du modèle reservation clientId, bienImmobilierId, dateDebut, dateFin, montant, statut
 module.exports = Reservation;
