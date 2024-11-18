@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // routes/reservationRoutes.js
 import {router} from "express";
 const router = express.Router();
@@ -11,3 +12,5 @@ router.put('/:id', bienImmobilierController.updateBienImmobilier);  // Mettre à
 router.delete('/:id', bienImmobilierController.deleteBienImmobilier); // Supprimer un bien immobilier
 
 module.exports = router;
+=======
+>>>>>>> Stashed changes
